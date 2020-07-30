@@ -19,7 +19,7 @@ RUN npm install -g ionic
 COPY . .
 
 # Build with ionic
-RUN ionic build
+RUN ionic build --prod
 
 # bind the port that the image will use
 EXPOSE 8100
