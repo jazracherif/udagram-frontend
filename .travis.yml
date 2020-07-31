@@ -1,21 +1,21 @@
 language: node_js
 node_js:
-  - 13
-
+- 13
 services:
-  - docker
-
+- docker
 install:
-  - echo "nothing to install"
-
+- pip install --user awscli
 before_script:
-  - echo "no before scripts actions"
-
+- echo "no before scripts actions"
 script:
-  - docker --version 
-  - docker build -t udagram-frontend --build-arg API_HOST=$API_HOST .
-  - docker tag udagram-frontend jazracherif/udagram-frontend:latest
-
+- docker --version
+- docker build -t udagram-frontend --build-arg API_HOST=$API_HOST .
+- docker tag udagram-frontend:latest 998443328643.dkr.ecr.us-east-1.amazonaws.com/udagram-frontend:latest
 after_success:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push jazracherif/udagram-frontend
+- aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin
+  998443328643.dkr.ecr.us-east-1.amazonaws.com
+- docker push 998443328643.dkr.ecr.us-east-1.amazonaws.com/udagram-frontend:latest
+env:
+  global:
+  - secure: BjosdEnV8bcvUFRaHWoqFEtyjzXaw+Y3bvp9S2BVTxz2Rw67dYyr2+9RkLB9frO9cXCubmAM/thNtYhiEylmPqLwkoFONreKmNaGNR5jHwlF+i8UBODdU6H+vnbjlDW2O/CgTob3+TsxLNP/zcBWFjE7rHU7/acl7RFbm7eplVJU2ZNNEi4jNZ6pe6KAZPUjWPoWZFVK4NvZ2tkVyJ9ZFJlhAWLyaJa+a6wL/I7VeKN1J2HRoyFKHB9qcELgmXxomFF+Lh+x+IjAc+8wtrp/aVLLewSQ4yqGHJWOPzyvFaPla8WptNfxdQyqIbHQEUrLHgqK66hdIe9QoePxJ4Dr7BIc5skFjbuOFViYZmtC7pBZZY9ALFQFttf3WBKX3gugwB5b1CZgde8mBb3ygWG1mVTXZttvzyRpRegC5bNbGaBpT2z7zX611CljIWPNtrJuEGEut8JSi/FDfxSXC5HB8WyyB0tv4oipHPMSsw2qcrTKxOaBDK0J8pM+V/32B3Ed/FSR5yRP6fj2lbWotkOHTF+Ucw/CgIw1z+j3PPDSyS2fAAV2UfwObEQ5WYzy+0bxrIpwVyH2biPvgNpgIIJ7vcwG8Qy6/MKriPwr8fQVjJWcSBH06HkINiU/ee/kUDqBWqqT8YSOLLWc8B76lsN5UDjY9LS0mwxlTsjLShIxbJI=
+  - secure: aooJrjS6SoDMdOtYExPC5ARWtHOQcoyjAOHKu8eGGAm/m+l0+2+YbcLa5CSJ8JTB6NXrk83OE7gy+sSj+wEJOiQonHiHvhYKQU2q9EiE9vJlK72x9YWoH0tqTesw/czKCm5Q6wsoEZ4X0sWqbkMVnFGxeWJzOVth/EhBauHuY3D50MvO7NPxr+NtOTIATbB2dH4XKD4L3xF9qbCOWD+KxF6AWWgx5dI2WzH7workHuPcGciWh8skRCz+rFUKvlOPWpke6hiSL6SVstT3smkF9m3R1UF7kJwt6swHNL+/b6ysLMkqUbFUHIqoRksK9NtNxn+iGHyNyzO1G7sK9aGoOZxIXo8huBN7JLel1ySCM0/cpiz/nyQGCdmbR7c/RjvaWBWOsyW/scWUZalJd3menL36KPw6v+sd8VaYsSxLddGWEu7QMxc7FkcV5nlLVTp9W2T5TAj3MF+ipRTFQRIlWE6fjwCPNm40vsjSS736q484ErEOHvUg9xYSRXbKJL3v90fh0xLiWf2XCbuFjwarTUUORcsGBy0kUaUO3Uhn+aJn3LbLS5MbHuEPr6To+DMYsE8aSDfvtHPBXtJU+o0cD4dCa2upbQUkxyW8hNDINv55gfGE5WczBGIXN/63LSU25H8X94cZ8vjut4at/Y/j9CHBepyRKJLzWPk6WNUtjqE=
