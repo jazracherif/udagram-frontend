@@ -29,4 +29,5 @@ RUN ionic build
 EXPOSE 8100
 
 # define startup behavior
-CMD ["ionic", "serve", "--external"]
+CMD ["ionic", "serve", "--external", "--host", "0.0.0.0", "--disable-host-check"]
+
