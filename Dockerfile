@@ -1,33 +1,18 @@
-# Use nodeJS base image
-FROM node:13
-
-ARG API_HOST_ARG
-
-ENV API_HOST $API_HOST_ARG
-
-# Create a working directory
+# # define startup behavior
+# CMD ["ionic", "serve", "--external", "--host", "0.0.0.0", "--disableHostCheck", "true"]
+FROM beevelop/ionic:latest AS ionic
+# Create app directory
 WORKDIR /usr/src/app
-
-# copy the nodeJS dependency packages
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
 COPY package*.json ./
-COPY ionic*.json ./
-COPY angular*.json ./
-
-# install the packages
-RUN npm install .
-
-# install ionic
-RUN npm install -g ionic
-
-# copy the souce code
+RUN npm ci
+# Bundle app source
 COPY . .
-
-# Build with ionic
 RUN ionic build
 
-# bind the port that the image will use
-EXPOSE 8100
-
-# define startup behavior
-CMD ["ionic", "serve", "--external", "--host", "0.0.0.0", "--disableHostCheck", "true"]
-
+## Run 
+FROM nginx:alpine
+#COPY www /usr/share/nginx/html
+COPY --from=ionic  /usr/src/app/www /usr/share/nginx/html
