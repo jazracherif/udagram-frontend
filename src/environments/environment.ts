@@ -8,7 +8,7 @@
 // if (API_HOST) {
 //     apiHost = API_HOST+"/api/v0"
 // }
-const apiHost = "a55dc60dae1b54698b6942a6ef3c434c-464784487.us-east-1.elb.amazonaws.com:8080/api/v0"
+const apiHost = "http://a55dc60dae1b54698b6942a6ef3c434c-464784487.us-east-1.elb.amazonaws.com:8080/api/v0"
 
 export const environment = {
   production: false,
