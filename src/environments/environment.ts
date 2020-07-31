@@ -8,7 +8,7 @@
 // if (API_HOST) {
 //     apiHost = API_HOST+"/api/v0"
 // }
-const apiHost = "udagram-api-feed:8080/api/v0"
+const apiHost = "http://udagram-api-feed:8080/api/v0"
 
 export const environment = {
   production: false,

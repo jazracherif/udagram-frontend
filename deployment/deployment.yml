@@ -19,4 +19,4 @@ spec:
         imagePullPolicy: Always
         image: 998443328643.dkr.ecr.us-east-1.amazonaws.com/udagram-frontend:latest
         ports:
-          - containerPort: 8100
+          - containerPort: 80
