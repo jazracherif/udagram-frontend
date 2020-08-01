@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 // Reverse Proxy host url
-const apiHost = "a2749c6d11edd4bad836b14241b5f696-111276899.us-east-1.elb.amazonaws.com:8080/api/v0"
+const apiHost = "http://a2749c6d11edd4bad836b14241b5f696-111276899.us-east-1.elb.amazonaws.com:8080/api/v0"
 
 export const environment = {
   production: false,
