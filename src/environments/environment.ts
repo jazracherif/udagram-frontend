@@ -2,13 +2,8 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-// var apiHost = "http://localhost:8080/api/v0"
-
-// const API_HOST = process.env.API_HOST
-// if (API_HOST) {
-//     apiHost = API_HOST+"/api/v0"
-// }
-const apiHost = "http://a55dc60dae1b54698b6942a6ef3c434c-464784487.us-east-1.elb.amazonaws.com:8080/api/v0"
+// Reverse Proxy host url
+const apiHost = "a2749c6d11edd4bad836b14241b5f696-111276899.us-east-1.elb.amazonaws.com:8080/api/v0"
 
 export const environment = {
   production: false,
